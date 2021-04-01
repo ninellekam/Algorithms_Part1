@@ -27,6 +27,7 @@ void	lexi(std::vector<int> &vec) {
 int sums(std::vector<int> &vec, std::vector<int> &vec_tmp, int target, int q) {
 	size_t n = vec.size();
 	if (target == 0) {
+		lexi(vec_tmp);
 		return 0;
 	}
 	if (target < 0)
@@ -37,4 +38,10 @@ int sums(std::vector<int> &vec, std::vector<int> &vec_tmp, int target, int q) {
 		vec_tmp.pop_back();
 	}
 	return 1;
+}
+
+int main() {
+	std::vector<int> vec = {1, 2, 3};
+	std::vector<int> vec_tmp;
+	sums(vec, vec_tmp, 3, 0);
 }
