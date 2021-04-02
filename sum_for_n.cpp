@@ -41,7 +41,7 @@ int sums(std::vector<int> &vec, std::vector<int> &vec_tmp, int target, int q) {
 }
 
 int main() {
-	std::vector<int> vec = {1, 2, 3};
+	std::vector<int> vec = {50, 2, 50, 50, 14, 50};
 	std::vector<int> vec_tmp;
 	sums(vec, vec_tmp, 3, 0);
 }

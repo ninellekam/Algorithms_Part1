@@ -5,19 +5,17 @@
 
 template <typename T>
 int	index(const std::vector<T> &vec) {
-	size_t N = vec.size(), left = 0, right = vec.size() - 1, indx = 0;
+	size_t N = vec.size(), left = 0, right = vec.size() - 1;
 
 	for (int i = 0; left < right; ++i) {
 		size_t mid = (left + right) / 2;
-		if (indx != N + 1 && vec[indx] == 0 && vec[indx + 1] == 1)
-			return indx;
+		if (mid < N - 1 && vec[mid] == 0 && vec[mid + 1] == 1)
+			return mid;
 		if (vec[mid] == 1) {
-			indx = mid;
-			--right;
+			right = --mid;
 		}
 		else if (vec[mid] == 0) {
-			indx = mid;
-			++left;
+			left = ++mid;
 		}
 	}
 	return -1;
