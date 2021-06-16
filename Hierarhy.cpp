@@ -19,14 +19,13 @@ protected:
 		Long = long_;
 		Width = width_;
 	}
-	virtual ~CPolygon(){}// Виртуальный деструктор
-	virtual double Area() = 0;// Находим площадь
+	virtual ~CPolygon(){}
+	virtual double Area(){}
 	virtual void Show() {
 		cout<< "Shape: " << Name <<endl;
 		cout<< "Width: " << Width << endl;
 		cout << "Area: " << Area() << endl;
 	}
-	// virtual void Show() = 0;// Выводим информацию
 };
 
 class CTriangle :public CPolygon
@@ -79,10 +78,7 @@ public:
 };
 
 class CQuadrangle: public CPolygon {
-	int a;
-	int b;
-	int c;
-	int d;
+	int a; int b; int c; int d;
 	double alfa;
 	double betta;
 public:
@@ -106,8 +102,8 @@ public:
 
 int main() {
 	std::string shape = "";
-	CPolygon *POL[4];
-	// auto POL = std::make_unique<CPolygon[]>(4);
+	// CPolygon *POL[4];
+	std::unique_ptr<CPolygon[]> POL = std::make_unique<CPolygon[]>(4);
 	for (size_t i = 0; i < 4; ++i) {
 		std::cin >> shape;
 		if(!strcmp(shape.c_str(), "Triangle")) {
@@ -116,8 +112,8 @@ int main() {
 			POL[i]->Show();
 		}
 		else if(!strcmp(shape.c_str(), "Rectangle")) {
-			// POL[i] = std::make_unique<CRectangle> C;
-			POL[i] = new CRectangle();
+			POL[i] = std::make_unique<CRectangle>();
+			// POL[i] = new CRectangle();
 			POL[i]->Area();
 			POL[i]->Show();
 		}
